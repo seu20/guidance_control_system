@@ -1,0 +1,5 @@
+../App/Drivers/API/Src/sensor.c:24:6:Sensor_Trigger	2
+../App/Drivers/API/Src/sensor.c:46:6:Sensor_ISR	5
+../App/Drivers/API/Src/sensor.c:75:10:Get_Distance	1
+../App/Drivers/API/Src/sensor.c:85:17:calculate_distance	1
+../App/Drivers/API/Src/sensor.c:94:6:HAL_GPIO_EXTI_Callback	1
