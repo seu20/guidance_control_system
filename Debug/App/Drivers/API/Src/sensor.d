@@ -1,4 +1,21 @@
 App/Drivers/API/Src/sensor.o: ../App/Drivers/API/Src/sensor.c \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/FreeRTOS.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/FreeRTOSConfig.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/OS/SEGGER_SYSVIEW_FreeRTOS.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SYSVIEW/SEGGER_SYSVIEW.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/Config/Global.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SYSVIEW/SEGGER_SYSVIEW_ConfDefaults.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/Config/SEGGER_SYSVIEW_Conf.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER_RTT_ConfDefaults.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER_RTT_Conf.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/projdefs.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/portable.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/deprecated_definitions.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/mpu_wrappers.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/task.h \
+ C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/list.h \
  C:/STM32_workspace/target_tracker/App/Drivers/API/Inc/sensor.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
@@ -23,7 +40,25 @@ App/Drivers/API/Src/sensor.o: ../App/Drivers/API/Src/sensor.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/FreeRTOS.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/FreeRTOSConfig.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/OS/SEGGER_SYSVIEW_FreeRTOS.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SYSVIEW/SEGGER_SYSVIEW.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/Config/Global.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SYSVIEW/SEGGER_SYSVIEW_ConfDefaults.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/Config/SEGGER_SYSVIEW_Conf.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER_RTT_ConfDefaults.h:
+C:/STM32_workspace/target_tracker/ThirdParty/SEGGER_SYSTEMVIEW/SEGGER/SEGGER_RTT_Conf.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/projdefs.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/portable.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/deprecated_definitions.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/mpu_wrappers.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/task.h:
+C:/STM32_workspace/target_tracker/ThirdParty/FreeRTOS/include/list.h:
 C:/STM32_workspace/target_tracker/App/Drivers/API/Inc/sensor.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -50,3 +85,4 @@ C:/STM32_workspace/target_tracker/App/Drivers/API/Inc/sensor.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:

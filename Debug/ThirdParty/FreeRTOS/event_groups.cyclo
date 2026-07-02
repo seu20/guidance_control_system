@@ -8,3 +8,5 @@
 ../ThirdParty/FreeRTOS/event_groups.c:748:10:vEventGroupSetBitsCallback	1
 ../ThirdParty/FreeRTOS/event_groups.c:764:10:vEventGroupClearBitsCallback	1
 ../ThirdParty/FreeRTOS/event_groups.c:778:23:prvTestWaitCondition	4
+../ThirdParty/FreeRTOS/event_groups.c:838:21:uxEventGroupGetNumber	2
+../ThirdParty/FreeRTOS/event_groups.c:868:14:vEventGroupSetNumber	1

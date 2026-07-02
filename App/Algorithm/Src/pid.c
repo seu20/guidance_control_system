@@ -16,6 +16,9 @@ static PID_Controller_t pid = {kp, ki, kd, d_t, 0, 0, i_lim};
  */
 int16_t PID_Compute(int16_t curr_error)
 {
+	// LPF 적용을 위한 알파값
+	int16_t alpha = 8;
+
     // 1. 현재 오차 계산
     float error = (float)curr_error;
 
@@ -34,15 +37,19 @@ int16_t PID_Compute(int16_t curr_error)
 
     // 4. D 항 (미분) 계산
     // 이산 시간 미분: (현재 오차 - 직전 오차) / dt
-    float d_term = pid.Kd * ((error - pid.prev_error) / pid.dt);
+
+    //float d_term = pid.Kd * ((error - pid.prev_error) / pid.dt);
+
 
     // 5. 최종 출력 합산
-    float output = p_term + i_term + d_term;
+    float output = p_term + i_term;
 
     // 7. 다음 주기를 위해 현재 오차를 과거 데이터로 저장
     pid.prev_error = error;
 
-    return (int16_t)output;
+    int16_t filtered_output = ((pid.prev_output * alpha) + (output * (10 - alpha))) / 10;
+	pid.prev_output = (int16_t)output;
+    return filtered_output;
 }
 
 /**

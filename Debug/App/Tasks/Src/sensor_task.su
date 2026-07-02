@@ -1,1 +1,1 @@
-../App/Tasks/Src/sensor_task.c:10:6:vTaskSensorScanner	32	static
+../App/Tasks/Src/sensor_task.c:10:6:vTaskSensorScanner	24	static

@@ -31,4 +31,8 @@ Drivers/STM32F1xx_HAL_Driver/Src \
 ThirdParty/FreeRTOS \
 ThirdParty/FreeRTOS/portable/GCC/ARM_CM3 \
 ThirdParty/FreeRTOS/portable/MemMang \
+ThirdParty/SEGGER_SYSTEMVIEW/Config \
+ThirdParty/SEGGER_SYSTEMVIEW/OS \
+ThirdParty/SEGGER_SYSTEMVIEW/SEGGER \
+ThirdParty/SEGGER_SYSTEMVIEW/SYSVIEW \
 

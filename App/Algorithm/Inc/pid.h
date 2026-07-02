@@ -13,7 +13,7 @@
 //defines
 #define kp		1.5f
 #define	ki		0.2f
-#define kd		0.05f
+#define kd		0.0f
 #define d_t		0.02f
 #define	i_lim	50.0f
 
@@ -29,6 +29,7 @@ typedef struct {
 
     // 과거 데이터 (상태 변수)
     float prev_error;
+    int16_t prev_output;
     float i_sum;
 
     // 제어 한계값 (Saturation & Anti-Windup)

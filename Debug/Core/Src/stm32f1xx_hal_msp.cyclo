@@ -1,6 +1,9 @@
+../Drivers/CMSIS/Include/core_cm3.h:1480:22:__NVIC_SetPriorityGrouping	1
 ../Core/Src/stm32f1xx_hal_msp.c:64:6:HAL_MspInit	1
-../Core/Src/stm32f1xx_hal_msp.c:91:6:HAL_TIM_Base_MspInit	3
-../Core/Src/stm32f1xx_hal_msp.c:124:6:HAL_TIM_PWM_MspInit	2
-../Core/Src/stm32f1xx_hal_msp.c:141:6:HAL_TIM_MspPostInit	2
-../Core/Src/stm32f1xx_hal_msp.c:171:6:HAL_TIM_Base_MspDeInit	3
-../Core/Src/stm32f1xx_hal_msp.c:204:6:HAL_TIM_PWM_MspDeInit	2
+../Core/Src/stm32f1xx_hal_msp.c:92:6:HAL_TIM_Base_MspInit	3
+../Core/Src/stm32f1xx_hal_msp.c:125:6:HAL_TIM_PWM_MspInit	2
+../Core/Src/stm32f1xx_hal_msp.c:142:6:HAL_TIM_MspPostInit	2
+../Core/Src/stm32f1xx_hal_msp.c:172:6:HAL_TIM_Base_MspDeInit	3
+../Core/Src/stm32f1xx_hal_msp.c:205:6:HAL_TIM_PWM_MspDeInit	2
+../Core/Src/stm32f1xx_hal_msp.c:227:6:HAL_UART_MspInit	3
+../Core/Src/stm32f1xx_hal_msp.c:279:6:HAL_UART_MspDeInit	2

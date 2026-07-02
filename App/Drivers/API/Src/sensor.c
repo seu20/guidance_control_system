@@ -5,6 +5,8 @@
  *      Author: John
  */
 
+#include "FreeRTOS.h"
+#include "task.h"
 #include <sensor.h>
 
 // variables
@@ -14,6 +16,7 @@ extern TIM_HandleTypeDef htim3;
 
 // static functions
 static uint16_t calculate_distance(uint16_t start_time, uint16_t end_time);
+static void delay_us(uint16_t us);
 
 
 /*
@@ -26,15 +29,19 @@ void Sensor_Trigger(uint8_t sensor)
 	// 트리거한 후에만 값을 받기
 	Sensors[sensor].is_waiting = 1;
 
+	taskENTER_CRITICAL();
 	if (sensor == LEFT_SENSOR)
 	{
 		HAL_GPIO_WritePin(GPIOB, S1_Trigger_Pin, GPIO_PIN_SET);
-		// 다시 꺼줘야함
+		delay_us(10);
+		HAL_GPIO_WritePin(GPIOB, S1_Trigger_Pin, GPIO_PIN_RESET);
 	}else
 	{
 		HAL_GPIO_WritePin(GPIOB, S2_Trigger_Pin, GPIO_PIN_SET);
-		// 다시 꺼줘야함
+		delay_us(10);
+		HAL_GPIO_WritePin(GPIOB, S2_Trigger_Pin, GPIO_PIN_RESET);
 	}
+	taskEXIT_CRITICAL();
 }
 
 /*
@@ -84,9 +91,24 @@ uint16_t Get_Distance(uint8_t step)
  */
 static uint16_t calculate_distance(uint16_t start_time, uint16_t end_time)
 {
-	return (end_time - start_time) / US_Speed;
+	uint16_t diff;
+
+	if (end_time >= start_time)
+	{
+		diff = end_time - start_time;
+	}else
+	{
+		diff = (end_time + 65535) - start_time;
+	}
+	return (diff / US_Speed);
 }
 
+static void delay_us(uint16_t us)
+{
+    // 타이머 딜레이
+    uint16_t start = __HAL_TIM_GET_COUNTER(&htim2);
+    while ((__HAL_TIM_GET_COUNTER(&htim2) - start) < us);
+}
 
 /* ----------------------------------------------------------------
 * 					인터럽트 콜백 함수

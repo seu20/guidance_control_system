@@ -10,33 +10,29 @@
 void vTaskSensorScanner(void* parameters)
 {
 	// 지역 변수로 어떤 센서를 읽을지
-	static uint8_t step = LEFT_SENSOR;
+	static uint8_t sensor_to_read = LEFT_SENSOR;
 	static uint16_t dist[2] = {0, };
-
-    TickType_t xLastWakeUpTime = xTaskGetTickCount();
-    const TickType_t xBlockTime = pdMS_TO_TICKS(10);
 
     for(;;)
     {
-    	if(step == LEFT_SENSOR)
+    	if(sensor_to_read == LEFT_SENSOR)
 		{
-    		dist[step] = Get_Distance(step);
-
-    		xQueueSend(xQueueSensor, &dist, 0);
+    		dist[sensor_to_read] = Get_Distance(sensor_to_read);
 
     		Sensor_Trigger(RIGHT_SENSOR);
 
-			step = RIGHT_SENSOR;
+			sensor_to_read = RIGHT_SENSOR;
 		}else
 		{
-			dist[step] = Get_Distance(step);
+			dist[sensor_to_read] = Get_Distance(sensor_to_read);
 
 			Sensor_Trigger(LEFT_SENSOR);
 
-			step = LEFT_SENSOR;
+			sensor_to_read = LEFT_SENSOR;
 		}
+    	xQueueSend(xQueueSensor, &dist, 0);
         // 신호만 보내고 바로 잠듦
-        vTaskDelayUntil(&xLastWakeUpTime, xBlockTime);
+        vTaskDelay(pdMS_TO_TICKS(20));
     }
 }
 

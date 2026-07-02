@@ -13,6 +13,9 @@
 ../ThirdParty/FreeRTOS/queue.c:2220:13:uxQueueSpacesAvailable	2
 ../ThirdParty/FreeRTOS/queue.c:2241:13:uxQueueMessagesWaitingFromISR	2
 ../ThirdParty/FreeRTOS/queue.c:2257:6:vQueueDelete	2
+../ThirdParty/FreeRTOS/queue.c:2305:17:uxQueueGetQueueNumber	1
+../ThirdParty/FreeRTOS/queue.c:2319:10:vQueueSetQueueNumber	1
+../ThirdParty/FreeRTOS/queue.c:2334:13:ucQueueGetQueueType	1
 ../ThirdParty/FreeRTOS/queue.c:2346:13:uxQueueGetQueueItemSize	1
 ../ThirdParty/FreeRTOS/queue.c:2356:13:uxQueueGetQueueLength	1
 ../ThirdParty/FreeRTOS/queue.c:2393:19:prvCopyDataToQueue	7

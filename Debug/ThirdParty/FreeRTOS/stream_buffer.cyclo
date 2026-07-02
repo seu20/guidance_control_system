@@ -22,3 +22,6 @@
 ../ThirdParty/FreeRTOS/stream_buffer.c:1590:13:prvInitialiseNewStreamBuffer	2
 ../ThirdParty/FreeRTOS/stream_buffer.c:1638:13:uxStreamBufferGetStreamBufferNotificationIndex	2
 ../ThirdParty/FreeRTOS/stream_buffer.c:1652:6:vStreamBufferSetStreamBufferNotificationIndex	8
+../ThirdParty/FreeRTOS/stream_buffer.c:1674:17:uxStreamBufferGetStreamBufferNumber	1
+../ThirdParty/FreeRTOS/stream_buffer.c:1688:10:vStreamBufferSetStreamBufferNumber	1
+../ThirdParty/FreeRTOS/stream_buffer.c:1703:13:ucStreamBufferGetStreamBufferType	1

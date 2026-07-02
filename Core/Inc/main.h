@@ -70,6 +70,8 @@ void Error_Handler(void);
 #define LD2_GPIO_Port GPIOA
 #define SERVO_Pin GPIO_PIN_6
 #define SERVO_GPIO_Port GPIOA
+#define Laser_Pin GPIO_PIN_4
+#define Laser_GPIO_Port GPIOC
 #define S1_Echo_Pin GPIO_PIN_10
 #define S1_Echo_GPIO_Port GPIOA
 #define S1_Echo_EXTI_IRQn EXTI15_10_IRQn
@@ -86,7 +88,6 @@ void Error_Handler(void);
 #define S1_Trigger_GPIO_Port GPIOB
 #define S2_Trigger_Pin GPIO_PIN_6
 #define S2_Trigger_GPIO_Port GPIOB
-#define PWM_START	1500
 
 /* USER CODE BEGIN Private defines */
 

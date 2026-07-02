@@ -42,6 +42,8 @@
 #include "timers.h"
 #include "stack_macros.h"
 
+#define uxCurrentNumberOfTasks uxTaskNumber
+
 /* The default definitions are only available for non-MPU ports. The
  * reason is that the stack alignment requirements vary for different
  * architectures.*/
@@ -496,12 +498,12 @@ PRIVILEGED_DATA static List_t xPendingReadyList;                         /**< Ta
 /* Global POSIX errno. Its value is changed upon context switching to match
  * the errno of the currently running task. */
 #if ( configUSE_POSIX_ERRNO == 1 )
-    int FreeRTOS_errno = 0;
+    static volatile UBaseType_t uxCurrentNumberOfTasks = ( UBaseType_t ) 0U;
+int FreeRTOS_errno = 0;
 #endif
 
 /* Other file private variables. --------------------------------*/
-PRIVILEGED_DATA static volatile UBaseType_t uxCurrentNumberOfTasks = ( UBaseType_t ) 0U;
-PRIVILEGED_DATA static volatile TickType_t xTickCount = ( TickType_t ) configINITIAL_TICK_COUNT;
+PRIVILEGED_DATA PRIVILEGED_DATA static volatile TickType_t xTickCount = ( TickType_t ) configINITIAL_TICK_COUNT;
 PRIVILEGED_DATA static volatile UBaseType_t uxTopReadyPriority = tskIDLE_PRIORITY;
 PRIVILEGED_DATA static volatile BaseType_t xSchedulerRunning = pdFALSE;
 PRIVILEGED_DATA static volatile TickType_t xPendedTicks = ( TickType_t ) 0U;

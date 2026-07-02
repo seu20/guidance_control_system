@@ -31,4 +31,5 @@ extern QueueHandle_t xQueueUART;
 extern TaskHandle_t xSensorScannerHandle;
 extern TaskHandle_t xControlHandle;
 extern TaskHandle_t xUARTHandle;
+extern TaskHandle_t xTestHandle;
 #endif /* TASK_CONFIG_H_ */

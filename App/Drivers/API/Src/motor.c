@@ -5,19 +5,21 @@
  *      Author: user
  */
 
-#include <motor.h>
+#include "motor.h"
 
-//defines
-#define PWM_Step	5
-#define PWM_Shift	83
-#define	PWM_MAX		2000
-#define PWM_MIN		1000
-#define DIST_MAX	400
-#define DIST_MIN	3
-#define DIST_REF	30
+MotorPWM_t motor;
 
-extern TIM_HandleTypeDef htim3;
-MotorPWM_t motor = { &htim3, TIM_CHANNEL_1, PWM_START, DIR_RIGHT };
+void Motor_Init(TIM_HandleTypeDef *htim, uint32_t channel)
+{
+    motor.htim = htim;
+    motor.channel = channel;
+    motor.CCR = PWM_START;
+    motor.direction = DIR_RIGHT;
+
+    // PWM 하드웨어 시작도 아예 모터 드라이버가 알아서 하게 위임
+    HAL_TIM_PWM_Start(motor.htim, motor.channel);
+    __HAL_TIM_SET_COMPARE(motor.htim, motor.channel, motor.CCR);
+}
 
 /*
  * ----------------------------------------------------------------
@@ -26,23 +28,35 @@ MotorPWM_t motor = { &htim3, TIM_CHANNEL_1, PWM_START, DIR_RIGHT };
  */
 void Motor_Rotate(void)
 {
-	uint16_t curr_CCR = motor.CCR;
-	uint16_t next_CCR = curr_CCR + (PWM_Step * motor.direction);
+    int32_t next_CCR = (int32_t)motor.CCR + ((int32_t)PWM_Step * (int32_t)motor.direction);
 
-	if (next_CCR >= PWM_MAX)
-	{
-		next_CCR = PWM_MAX;
-		motor.direction = DIR_LEFT;
-	}else if (next_CCR <= PWM_MIN)
-	{
-		next_CCR = PWM_MIN;
-		motor.direction = DIR_RIGHT;
-	}
+    if (motor.direction == DIR_RIGHT)
+    {
+        if (next_CCR >= (int32_t)PWM_MAX)
+        {
+            next_CCR = (int32_t)PWM_MAX;
+            motor.direction = DIR_LEFT;
+        }
+    }
+    else if (motor.direction == DIR_LEFT)
+    {
+        if (next_CCR <= (int32_t)PWM_MIN)
+        {
+            next_CCR = (int32_t)PWM_MIN;
+            motor.direction = DIR_RIGHT;
+        }
+    }
 
-	__HAL_TIM_SET_COMPARE(motor.htim, motor.channel, next_CCR);
-	motor.CCR = next_CCR;
+    motor.CCR = (uint16_t)next_CCR;
+    __HAL_TIM_SET_COMPARE(motor.htim, motor.channel, motor.CCR);
 }
 
+uint8_t is_Motor_Limit(SensorCaught_t direction)
+{
+	// 현재 모터 각도가 한계인지 검사
+	if (((motor.CCR <= (PWM_MIN + PWM_Shift)) && (direction == RIGHT)) || ((motor.CCR == (PWM_MAX - PWM_Shift)) && (direction == LEFT)))	return 1;
+	return 0;
+}
 /*
  * ----------------------------------------------------------------
  * 					센서 한쪽에만 잡혔을때 그 방향으로 날개 꺾어줌
@@ -52,13 +66,14 @@ void Motor_Shift(SensorCaught_t sensor_caught)
 {
 	uint16_t curr_CCR = motor.CCR;
 	uint16_t next_CCR;
-	if (sensor_caught == LEFT)
+	if (sensor_caught == RIGHT)
 	{
+
 		next_CCR = curr_CCR - PWM_Shift;
 		if (next_CCR <= PWM_MIN)	next_CCR = PWM_MIN;
 		motor.CCR = next_CCR;
 		__HAL_TIM_SET_COMPARE(motor.htim, motor.channel, next_CCR);
-	}else if (sensor_caught == RIGHT)
+	}else if (sensor_caught == LEFT)
 	{
 		next_CCR = curr_CCR + PWM_Shift;
 		if (next_CCR >= PWM_MAX)	next_CCR = PWM_MAX;
@@ -94,8 +109,7 @@ SensorCaught_t Which_Sensor(uint16_t l_distance, uint16_t r_distance)
  */
 void Motor_PID_Control(int16_t steer_val)
 {
-	int16_t curr_CCR = (int16_t)motor.CCR;
-	uint16_t next_CCR = curr_CCR + steer_val;
+	int32_t next_CCR = (int32_t)motor.CCR + steer_val;
 
 	if (next_CCR >= PWM_MAX)	next_CCR = PWM_MAX;
 	if (next_CCR <= PWM_MIN)	next_CCR = PWM_MIN;

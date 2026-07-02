@@ -9,8 +9,7 @@
 #define TASKS_INC_UART_TASK_H_
 
 #include "task_config.h"
+#include "stm32f1xx_hal.h"
 
-
-
-
+#define FIND_MIN	0U
 #endif /* TASKS_INC_UART_TASK_H_ */
