@@ -1,7 +1,7 @@
 # STM32CubeIDE / Eclipse build artifacts
-**/Debug/
-**/Release/
-**/.settings/
+Debug/
+Release/
+.settings/
 
 *.o
 *.su
@@ -14,3 +14,4 @@
 .metadata/
 .project
 .cproject
+.mxproject
