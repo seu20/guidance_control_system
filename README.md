@@ -5,7 +5,11 @@
 ## 데모 영상
 - **좌측: 유도센서**
 - **우상단: 터미널 결과 출력 (양쪽 센서 측정값, PID 출력값, 상태, 각 태스크에 남아있는 스택 공간)**
-  <video controls src="Images/taerget_tracker demo.mp4" title="Title"></video>
+
+
+https://github.com/user-attachments/assets/b64add12-2f93-4af2-bfcb-d56fe05c2706
+
+
 **SEARCH_MODE -> LOCKON_MODE -> SEARCH MODE 상태 변환**
 ---
 
