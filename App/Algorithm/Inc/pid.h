@@ -13,7 +13,7 @@
 //defines
 #define kp		1.5f
 #define	ki		0.2f
-#define kd		0.0f
+#define kd		0.05f
 #define d_t		0.02f
 #define	i_lim	50.0f
 

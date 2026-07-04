@@ -17,7 +17,7 @@
 #define PWM_MIN		500
 #define DIST_MAX	400
 #define DIST_MIN	3
-#define DIST_REF	60
+#define DIST_REF	30
 #define PWM_START	1500
 
 

@@ -17,7 +17,7 @@ static PID_Controller_t pid = {kp, ki, kd, d_t, 0, 0, i_lim};
 int16_t PID_Compute(int16_t curr_error)
 {
 	// LPF 적용을 위한 알파값
-	int16_t alpha = 8;
+	int16_t alpha = 3;
 
     // 1. 현재 오차 계산
     float error = (float)curr_error;

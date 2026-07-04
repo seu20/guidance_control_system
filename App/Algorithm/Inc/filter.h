@@ -13,7 +13,7 @@
 #define BUFFER_SIZE	3
 
 typedef struct {
-	uint16_t dist[3];
+	uint16_t dist[BUFFER_SIZE];
 	uint8_t index;
 	uint16_t sum;
 }Ring_Buffer_t;

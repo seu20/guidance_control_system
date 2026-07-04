@@ -14,11 +14,10 @@ uint16_t Buffer_Filter(Ring_Buffer_t *buffer, uint16_t distance)
 	buffer->sum -= buffer->dist[buffer->index];
 	// 최신값 push
 	buffer->dist[buffer->index] = distance;
-	// 값 최신화
+	// 합 최신화
 	buffer->sum += buffer->dist[buffer->index];
-	// 인덱스 최신화
+	// 가리키는 값의 인덱스 최신화
 	buffer->index = (buffer->index + 1) % BUFFER_SIZE;
-	// 평균값 구하기 리턴
+	// 평균값 리턴
 	return (buffer->sum) / BUFFER_SIZE;
-
 }

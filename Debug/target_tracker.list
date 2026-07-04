@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0001cad9  00000000  00000000  00047bfc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000a1474  00000000  00000000  000646d5  2**0
+ 18 .debug_str    000a1475  00000000  00000000  000646d5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00105b49  2**0
+ 19 .comment      00000043  00000000  00000000  00105b4a  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000062d4  00000000  00000000  00105b8c  2**2
+ 20 .debug_frame  000062d4  00000000  00000000  00105b90  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000008f  00000000  00000000  0010be60  2**0
+ 21 .debug_line_str 0000008f  00000000  00000000  0010be64  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -836,7 +836,7 @@ uint16_t Buffer_Filter(Ring_Buffer_t *buffer, uint16_t distance)
  8000806:	687b      	ldr	r3, [r7, #4]
  8000808:	887a      	ldrh	r2, [r7, #2]
  800080a:	f823 2011 	strh.w	r2, [r3, r1, lsl #1]
-	// 값 최신화
+	// 합 최신화
 	buffer->sum += buffer->dist[buffer->index];
  800080e:	687b      	ldr	r3, [r7, #4]
  8000810:	891a      	ldrh	r2, [r3, #8]
@@ -849,7 +849,7 @@ uint16_t Buffer_Filter(Ring_Buffer_t *buffer, uint16_t distance)
  8000820:	b29a      	uxth	r2, r3
  8000822:	687b      	ldr	r3, [r7, #4]
  8000824:	811a      	strh	r2, [r3, #8]
-	// 인덱스 최신화
+	// 가리키는 값의 인덱스 최신화
 	buffer->index = (buffer->index + 1) % BUFFER_SIZE;
  8000826:	687b      	ldr	r3, [r7, #4]
  8000828:	799b      	ldrb	r3, [r3, #6]
@@ -865,7 +865,7 @@ uint16_t Buffer_Filter(Ring_Buffer_t *buffer, uint16_t distance)
  800083e:	b2ca      	uxtb	r2, r1
  8000840:	687b      	ldr	r3, [r7, #4]
  8000842:	719a      	strb	r2, [r3, #6]
-	// 평균값 구하기 리턴
+	// 평균값 리턴
 	return (buffer->sum) / BUFFER_SIZE;
  8000844:	687b      	ldr	r3, [r7, #4]
  8000846:	891b      	ldrh	r3, [r3, #8]
@@ -873,7 +873,6 @@ uint16_t Buffer_Filter(Ring_Buffer_t *buffer, uint16_t distance)
  800084a:	fba2 2303 	umull	r2, r3, r2, r3
  800084e:	085b      	lsrs	r3, r3, #1
  8000850:	b29b      	uxth	r3, r3
-
 }
  8000852:	4618      	mov	r0, r3
  8000854:	370c      	adds	r7, #12
@@ -896,8 +895,8 @@ int16_t PID_Compute(int16_t curr_error)
  800086a:	4603      	mov	r3, r0
  800086c:	80fb      	strh	r3, [r7, #6]
 	// LPF 적용을 위한 알파값
-	int16_t alpha = 8;
- 800086e:	2308      	movs	r3, #8
+	int16_t alpha = 3;
+ 800086e:	2303      	movs	r3, #3
  8000870:	83fb      	strh	r3, [r7, #30]
 
     // 1. 현재 오차 계산
@@ -1507,7 +1506,7 @@ SensorCaught_t Which_Sensor(uint16_t l_distance, uint16_t r_distance)
  8000c56:	2b03      	cmp	r3, #3
  8000c58:	d904      	bls.n	8000c64 <Which_Sensor+0x20>
  8000c5a:	88fb      	ldrh	r3, [r7, #6]
- 8000c5c:	2b3c      	cmp	r3, #60	@ 0x3c
+ 8000c5c:	2b1e      	cmp	r3, #30
  8000c5e:	d801      	bhi.n	8000c64 <Which_Sensor+0x20>
  8000c60:	2301      	movs	r3, #1
  8000c62:	e000      	b.n	8000c66 <Which_Sensor+0x22>
@@ -1518,7 +1517,7 @@ SensorCaught_t Which_Sensor(uint16_t l_distance, uint16_t r_distance)
  8000c6a:	2b03      	cmp	r3, #3
  8000c6c:	d904      	bls.n	8000c78 <Which_Sensor+0x34>
  8000c6e:	88bb      	ldrh	r3, [r7, #4]
- 8000c70:	2b3c      	cmp	r3, #60	@ 0x3c
+ 8000c70:	2b1e      	cmp	r3, #30
  8000c72:	d801      	bhi.n	8000c78 <Which_Sensor+0x34>
  8000c74:	2301      	movs	r3, #1
  8000c76:	e000      	b.n	8000c7a <Which_Sensor+0x36>
